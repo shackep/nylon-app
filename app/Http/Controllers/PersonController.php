@@ -37,7 +37,7 @@ class PersonController extends Controller
         $person->active = true;
         $person->save();
 
-        return redirect()->route('people.index');
+        return redirect('/add');
     }
 
     public function deactivate(Person $person)
