@@ -8,9 +8,9 @@
 <body>
 <form action="people" method="post">
     @csrf
-    <input type="text" name="first_name" placeholder="First Name">
-    <input type="text" name="last_name" placeholder="Last Name">
-    <input type="text" name="email" placeholder="Email">
+    <input type="text" name="first_name" required placeholder="First Name">
+    <input type="text" name="last_name" required placeholder="Last Name">
+    <input type="email" name="email" required placeholder="Email">
     <label>
     SSN <input
       name="ssn1"
