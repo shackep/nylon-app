@@ -4,10 +4,10 @@
 <table>
     <thead>
         <tr>
-          <th><a href=/admin/people?orderBy=first_name>First Name</a></th>
-          <th><a href=/admin/people?orderBy=last_name>Last Name</a></th>
-          <th><a href=/admin/people?orderBy=email>Email</a></th>
-          <th><a href=/admin/people?orderBy=last_four>SSN</a></th>
+          <th><a href=/dashboard/people?orderBy=first_name>First Name</a></th>
+          <th><a href=/dashboard/people?orderBy=last_name>Last Name</a></th>
+          <th><a href=/dashboard/people?orderBy=email>Email</a></th>
+          <th><a href=/dashboard/people?orderBy=last_four>SSN</a></th>
           <th>Active</th>
           <th>Toggle State</th>
         </tr>
