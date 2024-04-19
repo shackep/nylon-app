@@ -8,7 +8,13 @@ class PersonController extends Controller
 {
     public function index(Request $request)
     {
-        $people = Person::all();
+        if ($request->has('orderBy')) {
+            $orderBy = $request->orderBy;
+        } else {
+            $orderBy = 'first_name';
+        }
+        $people = Person::all()->sortBy($orderBy,SORT_NATURAL|SORT_FLAG_CASE);
+        
 
         return view('people.index', compact('people'));
     }
