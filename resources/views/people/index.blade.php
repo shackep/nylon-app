@@ -4,10 +4,10 @@
 <table>
     <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>SSN</th>
+          <th><a href=/admin/people?orderBy=first_name>First Name</a></th>
+          <th><a href=/admin/people?orderBy=last_name>Last Name</a></th>
+          <th><a href=/admin/people?orderBy=email>Email</a></th>
+          <th><a href=/admin/people?orderBy=last_four>SSN</a></th>
           <th>Active</th>
           <th>Toggle State</th>
         </tr>
@@ -23,12 +23,12 @@
         @if ($person->active)
             <td><form action="/people/{{ $person->id }}/deactivate" method="POST">
     @csrf
-    <button type="submit">Deactivate</button>
+    <button type="submit" onclick="return confirm('Are you sure you want to deactivate this person?')">Deactivate</button>
 </form></td>
         @else    
             <td><form action="/people/{{ $person->id }}/activate" method="POST">
     @csrf
-    <button type="submit">Activate</button>
+    <button type="submit" onclick="return confirm('Are you sure you want to activate this person?')">Activate</button>
 </form></td>
         @endif
     </tr>
