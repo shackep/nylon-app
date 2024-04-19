@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
-            $table->text('social_security_number');
-            $table->string('ssn_last_four');
+            $table->text('NID');
+            $table->string('last_four');
             $table->boolean('active');
         });
     }

@@ -16,13 +16,14 @@ class PersonFactory extends Factory
      */
     public function definition(): array
     {
-        $ssn = fake()->ssn();
+        $nid = fake()->ssn();
+
         return [
-            'first_name' => fake()->name(),
-            'last_name' => fake()->name(),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
-            'social_security_number' => $ssn,
-            'ssn_last_four' => substr($ssn, -4),
+            'NID' =>  str_replace('-', '',$nid),
+            'last_four' => substr($nid, -4),
             'active' => fake()->boolean(),
         ];
     }

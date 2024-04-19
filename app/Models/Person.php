@@ -18,8 +18,8 @@ class Person extends Model
         'first_name',
         'last_name',
         'email',
-        'social_security_number',
-        'ssn_last_four',
+        'NID',
+        'last_four',
         'active',
     ];
 
@@ -29,7 +29,7 @@ class Person extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'social_security_number',
+        'NID',
     ];
 
     /**
@@ -40,7 +40,8 @@ class Person extends Model
     protected function casts(): array
     {
         return [
-            'social_security_number' => 'encrypted', // If social_security_number never needs to be decrypted, use 'hashed' instead. Hashes can be validated agains the original value, but cannot be decrypted.
+            'NID' => 'hashed', // Hashes can be validated against the original value, but take some dedicated effort to be decrypted.
+            //'NID' => 'encrypted', // If social_security_number needs to be decrypted, use 'encrypted' instead.
         ];
     }
 }

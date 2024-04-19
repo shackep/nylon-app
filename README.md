@@ -13,24 +13,24 @@ Business Requirements
 
 Nylon needs a Laravel website that needs to capture the First, Last, Email, and Social Security Number of a person.
 
-1. Create New Person Model and Schema:
+<!-- 1. Create New Person Model and Schema:
 - first_name - string
 - last_name - string
 - email - string
 - SSN - encrypted string - include commented out code for it being hashed if it only ever needs to be compared with provided number.
 - last_four - integers - useful for retrieval if there are many and we want to get a subset before decrypting. Also used in obfuscated display.
-- active - bool
+- active - bool -->
 
-2. Create Controller and route for person.
-- Post new person - public
+<!-- 2. Create Controller and route for person.
+- Post new person - public -->
     - BE validation for SSN & email
 - Middleware auth for index/crud
 
-3. Create Form for creating new person
+<!-- 3. Create Form for creating new person
     - HTML Validation for SSN  
     - HTML Validation for email
 
-    The entry fields must be in a single line that spans the width of a web browser, but is capable of being viewed in a responsive manner on a phone. This data is stored in a database. All security requirements must be met (except requiring SSL).
+    The entry fields must be in a single line that spans the width of a web browser, but is capable of being viewed in a responsive manner on a phone. This data is stored in a database. All security requirements must be met (except requiring SSL). -->
 
 2. Create Admin display
     - load index default first name, ordering
