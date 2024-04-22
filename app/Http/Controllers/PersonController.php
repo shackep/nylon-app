@@ -19,11 +19,6 @@ class PersonController extends Controller
         return view('people.index', compact('people'));
     }
 
-    public function create()
-    {
-        return view('people.create');
-    }
-
     public function store(Request $request)
     {
         // If ssn1, ssn2, and ssn3 are not integers of the correct count, return an error
@@ -37,7 +32,7 @@ class PersonController extends Controller
         $person->active = true;
         $person->save();
 
-        return redirect()->route('people.index');
+        return redirect('/add');
     }
 
     public function deactivate(Person $person)
