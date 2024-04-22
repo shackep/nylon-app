@@ -1,58 +1,65 @@
-The Test
 
-Using your personal GitHub account, create a simple Docker based Laravel application. Make sure to commit frequently with descriptive notes.
+# Example App
 
-// Set up using Sail 8.3  -> https://github.com/laravel/sail/blob/1.x/runtimes/8.3/Dockerfile 
-Create an Ubuntu 22.04 docker container using Docker Compose, configured as a typical LAMP stack. 
+## Build instructions
+Navigate to directory you want this to live in:
 
-For the repository, create a Main branch and a Develop branch where you see fit, merging into the Main branch as the final application to review.
+$ git clone git@github.com:shackep/nylon-app.git
 
-Create this mini application as you would your own. While it would be easy to spend a significant amount of time making this perfect, we expect this to take around 2-4 hours. 
+Make sure your version of composer is up to date
 
-Business Requirements
+$ cd nylon-app
 
-Nylon needs a Laravel website that needs to capture the First, Last, Email, and Social Security Number of a person.
+Make your .env file by copying .env example,
+$ cp .env.example .env 
 
-<!-- 1. Create New Person Model and Schema:
-- first_name - string
-- last_name - string
-- email - string
-- SSN - encrypted string - include commented out code for it being hashed if it only ever needs to be compared with provided number.
-- last_four - integers - useful for retrieval if there are many and we want to get a subset before decrypting. Also used in obfuscated display.
-- active - bool -->
+Change the DB values to:
 
-<!-- 2. Create Controller and route for person.
-- Post new person - public -->
-    - BE validation for SSN & email
-- Middleware auth for index/crud
+```
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=laravel
+    DB_USERNAME=sail
+    DB_PASSWORD=password
+```
 
-<!-- 3. Create Form for creating new person
-    - HTML Validation for SSN  
-    - HTML Validation for email
-
-    The entry fields must be in a single line that spans the width of a web browser, but is capable of being viewed in a responsive manner on a phone. This data is stored in a database. All security requirements must be met (except requiring SSL). -->
-
-2. Create Admin display
-    - load index default first name, ordering
-    - include 
-    For Admin CRUD, provide a URL (credentials optional with username/pass). On the admin page, the list of people added should be sortable by each field. Each person can be enabled and disabled, with a validation prompt required prior to changing the status.
+Run:
+$ composer install
 
 
-Development Requirements
+This app is set up using Laravel Sail.
+You can run:
+$ composer require laravel/sail --dev
+$ ./vendor/bin/sail build
+$ ./vendor/bin/sail up
+$ ./vendor/bin/sail artisan key:genarate
+$ ./vendor/bin/sail artisan migrate
+
+$ ./vendor/bin/sail artisan db:seed <- seed some people
+
+If you run into permissions issues you may need to adjust the permissions of the storage and bootstrap/cache directories:
+Check permissions group using:
+$ ls -alt
+
+$ sudo chown -R $USER:www-data storage
+$ sudo chown -R $USER:www-data bootstrap/cache
+
+$ ./vendor/bin/sail npm install
+$ ./vendor/bin/sail npm run dev
 
 
+Once you have a working install, you can:
+Create a profile via: http://localhost/register
+View people entries here: http://localhost/dashboard/people
+Add people here: http://localhost/add
 
+## Notes:
+I used sail as it was the correct Ubuntu 22.04 docker container, and was fairly straight forward. While I was able to spin up the application on a different computer, I am not sure if it will be as straight forward as a basic docker setup.
 
+The logic around SSN was the main hurdle. I defaulted to using a one way hash and pulling off the last four for display and sorting. I also named the DB column to obfuscate what the column contains. If we needed to actually have the SSN stored in the db I would approach it any number of ways. Break it into several parts and salt and hash it, so one must have the application logic + db to reverse/decode SSN numbers. Perhaps have a seperate DB that is only accessed for ss retrieval, store salts on the main DB and a id to help us with the retrieval, but keep user name and email seperately.
 
-This container will host a basic instance of Laravel
-The database will run MySQL and be in a container, as well 
-Make sure to include a dump of the schema that we can review
-The container should run code locally (from the git repo) so you can edit it in real time
+The form itself I kept simple. I used a classless CSS library. I could make make it "mobile first" and add breakpoints for the different screen sizes to get consistent stacking behavior. I spent the majority of my time getting a handle on sail and breeze.
 
+I would add backend validation and error messages using laravel's Validate logic to make sure SSN's and emails are in a valid format.
 
-The README should include:
-
-Installation instructions so that we can just build the containers and go to a URL
-Any comments/suggestions that would make this simple application better if there was more time, challenges to overcome, etc.
-
-END OF TEST REQUIREMENTS
