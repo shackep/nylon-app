@@ -8,10 +8,10 @@ $ git clone git@github.com:shackep/nylon-app.git
 
 Make sure your version of composer is up to date
 
-$ cd nylon-app
+` $ cd nylon-app `
 
 Make your .env file by copying .env example,
-$ cp .env.example .env 
+` $ cp .env.example .env `
 
 Change the DB values to:
 
@@ -25,28 +25,28 @@ Change the DB values to:
 ```
 
 Run:
-$ composer install
+` $ composer install `
 
 
 This app is set up using Laravel Sail.
 You can run:
-$ composer require laravel/sail --dev
-$ ./vendor/bin/sail build
-$ ./vendor/bin/sail up
-$ ./vendor/bin/sail artisan key:genarate
-$ ./vendor/bin/sail artisan migrate
+` $ composer require laravel/sail --dev `
+` $ ./vendor/bin/sail build `
+` $ ./vendor/bin/sail up `
+` $ ./vendor/bin/sail artisan key:genarate `
+` $ ./vendor/bin/sail artisan migrate `
 
-$ ./vendor/bin/sail artisan db:seed <- seed some people
+` $ ./vendor/bin/sail artisan db:seed ` <- seed some people
 
 If you run into permissions issues you may need to adjust the permissions of the storage and bootstrap/cache directories:
 Check permissions group using:
-$ ls -alt
+` $ ls -alt `
 
-$ sudo chown -R $USER:www-data storage
-$ sudo chown -R $USER:www-data bootstrap/cache
+` $ sudo chown -R $USER:www-data storage `
+` $ sudo chown -R $USER:www-data bootstrap/cache `
 
-$ ./vendor/bin/sail npm install
-$ ./vendor/bin/sail npm run dev
+` $ ./vendor/bin/sail npm install `
+` $ ./vendor/bin/sail npm run dev `
 
 
 Once you have a working install, you can:
