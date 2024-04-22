@@ -59,7 +59,9 @@ I used sail as it was the correct Ubuntu 22.04 docker container, and was fairly 
 
 The logic around SSN was the main hurdle. I defaulted to using a one way hash and pulling off the last four for display and sorting. I also named the DB column to obfuscate what the column contains. If we needed to actually have the SSN stored in the db I would approach it any number of ways. Break it into several parts and salt and hash it, so one must have the application logic + db to reverse/decode SSN numbers. Perhaps have a seperate DB that is only accessed for ss retrieval, store salts on the main DB and a id to help us with the retrieval, but keep user name and email seperately.
 
-The form itself I kept simple. I used a classless CSS library. I could make make it "mobile first" and add breakpoints for the different screen sizes to get consistent stacking behavior. I spent the majority of my time getting a handle on sail and breeze.
+The form itself I kept simple. I used a classless CSS library. I could make make it "mobile first" and add breakpoints for the different screen sizes to get consistent stacking behavior. I spent a bit of my time getting a handle on sail and breeze as I hadn't used those before.
 
-I would add backend validation and error messages using laravel's Validate logic to make sure SSN's and emails are in a valid format.
+I would add backend validation and error messages using laravel's Validate logic to make sure SSN's and emails are in a valid format. I would also add something the  'add' form to let the end user know that their submission was successful.
+
+I would make it so clicking on the table column header would alternate between asc/desc sort order. Currently it only sorts in ascending order. 
 
