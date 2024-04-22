@@ -31,9 +31,13 @@ Run:
 This app is set up using Laravel Sail.
 You can run:
 ` $ composer require laravel/sail --dev `
+
 ` $ ./vendor/bin/sail build `
+
 ` $ ./vendor/bin/sail up `
+
 ` $ ./vendor/bin/sail artisan key:genarate `
+
 ` $ ./vendor/bin/sail artisan migrate `
 
 ` $ ./vendor/bin/sail artisan db:seed ` <- seed some people
@@ -43,9 +47,11 @@ Check permissions group using:
 ` $ ls -alt `
 
 ` $ sudo chown -R $USER:www-data storage `
+
 ` $ sudo chown -R $USER:www-data bootstrap/cache `
 
 ` $ ./vendor/bin/sail npm install `
+
 ` $ ./vendor/bin/sail npm run dev `
 
 
